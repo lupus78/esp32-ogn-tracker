@@ -28,7 +28,7 @@
 #ifdef WITH_U8G2_LISTS
 const uint8_t DISP_Pages = 6+3;
 #else
-const uint8_t DISP_Pages = 6;
+const uint8_t DISP_Pages = 7;
 #endif
 static uint8_t DISP_Page = 1;
 #endif
@@ -178,6 +178,7 @@ void vTaskDISP(void* pvParameters)
           // case 6: OLED_DrawRelay (&U8G2_OLED, GPS); break;
           // case 7: OLED_DrawLookout(&U8G2_OLED, GPS); break;
           case 0: OLED_DrawBattery(&U8G2_OLED); break;
+          case 6: OLED_DrawPG  (&U8G2_OLED, GPS); break;
 #ifdef WITH_U8G2_LISTS
           case 6: OLED_DrawRelay (&U8G2_OLED, GPS); break;
           case 7: OLED_DrawLookout(&U8G2_OLED, GPS); break;
@@ -188,6 +189,7 @@ void vTaskDISP(void* pvParameters)
           //   OLED_DrawPosition(&U8G2_OLED, GPS, 2); }
         }
       }
+      //if ( DISP_Page != 6 )
       OLED_DrawStatusBar(&U8G2_OLED, GPS);
       u8g2_SendBuffer(&U8G2_OLED);
     }
