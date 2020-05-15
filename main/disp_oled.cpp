@@ -732,7 +732,7 @@ void OLED_DrawPG(u8g2_t *OLED, GPS_Position *GPS)
   // Speed
   Len=0;
   if(GPS) {
-    uint8_t speed = round(GPS->Speed * 3.6f);
+    uint16_t speed = round(GPS->Speed * 0.36f); // Speed is in 0.1m/s
     Len+=Format_UnsDec(Line+Len, speed, 1, 0);
     //Len+=Format_UnsDec(Line+Len, 623, 1, 0);
   }
